@@ -1,0 +1,110 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgb(0 0 0),rgb(117 120 106));
+  }
+
+  .container {
+      width: 500px;
+      height: 560px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgb(243, 247, 246);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 0px 12px 13px rgba(0, 0, 0,0.4 );
+  }
+  
+  .calendar {
+    display: flex;
+    flex-direction: column;
+    margin-inline:auto;
+    padding-top: 25px;
+  }
+  .prev-btn{
+    margin-left: 12px;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color:rgb(93 173 196);
+  } 
+  .next-btn:hover,.prev-btn:hover{
+    background-color:rgb(12, 115, 143) ;
+  }
+  
+
+  .next-btn{
+    margin-right: 12px;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: rgb(93 173 196);
+   
+  } 
+  
+  .days {
+    display: flex;
+    background-color: bisque;
+  }
+  
+  .day,
+  .week {
+    border: 1px solid black;
+    padding: 10px;
+    width: 35px;
+    align-items: center;
+    justify-self: center;
+    text-align: center;
+  }
+  .week:hover{
+    background-color: rgb(112, 215, 244);
+    cursor: pointer;
+  }
+  #today{
+    background-color: #20204857;;
+    color: #ffffff;
+    letter-spacing: 2px;
+    font-size: 34px;
+  }
+  #today:hover{
+    background-color:#22228f57;;
+  }
+  /* .weeks {
+    display: flex;
+    flex-direction: column;
+  } */
+  .weeks:active{
+  background-color: beige;
+  color: red;
+  }
+  
+  .controls {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    justify-content: space-between;
+    margin-top: 45px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    height: 54px;
+  }
+  
+  select {
+    height: 30px;
+    width: 120px;
+    border:0px;
+  }
+  
+  .today {
+    background-color:  #c47b7b;
+    color: white;
+  } 
