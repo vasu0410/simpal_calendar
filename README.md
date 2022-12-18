@@ -1,4 +1,4 @@
-# simpal_calendar
+# simple_calendar
 Simple Calander which show current day date and also able to see days, months and years.
 Implement project using html,css and javascript.
 Html use for content writing and show calendar. 
