@@ -1,23 +1,9 @@
+import { daysName,monthsName } from "./const.js";
+
 const days = document.querySelector(".days");
 const weeks = document.querySelector(".weeks");
 const prev = document.querySelector(".prev-btn");
 const next = document.querySelector(".next-btn");
-
-const daysName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-const monthsName = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
 
 let selectedMonth = new Date().getMonth() + 1;
 let selectedYear = new Date().getFullYear();
@@ -32,7 +18,7 @@ function generateLayout() {
 generateLayout();
 
 function generateCalendar(selectedMonth, selectedYear) {
-  console.log("generate - ", selectedMonth, selectedYear);
+  // console.log("generate - ", selectedMonth, selectedYear);
   weeks.innerHTML = "";
   // detail.innerText = `${monthsName[selectedMonth - 1]}, ${selectedYear}`;
   let noOfDays = new Date(selectedYear, selectedMonth, 0).getDate();
@@ -56,6 +42,7 @@ function generateCalendar(selectedMonth, selectedYear) {
 
           if (currentMonth === selectedMonth && currentYear === selectedYear) {
             const currentData = new Date().getDate();
+
             if (filledDays === currentData) {
               box.classList.add("today");
             }
@@ -69,7 +56,7 @@ function generateCalendar(selectedMonth, selectedYear) {
 }
 generateCalendar(selectedMonth, selectedYear);
 
-prev.addEventListener("click", () => {
+function generatePreviousMonth(){
   selectedMonth--;
   if (selectedMonth === 0) {
     selectedYear--;
@@ -78,9 +65,10 @@ prev.addEventListener("click", () => {
   generateCalendar(selectedMonth, selectedYear);
   monthSelect.value = selectedMonth - 1;
   yearSelect.value = selectedYear;
-});
+}
+prev.addEventListener("click", generatePreviousMonth);
 
-next.addEventListener("click", () => {
+function  generateNextMonth(){
   selectedMonth++;
   if (selectedMonth === 13) {
     selectedYear++;
@@ -89,12 +77,13 @@ next.addEventListener("click", () => {
   generateCalendar(selectedMonth, selectedYear);
   monthSelect.value = selectedMonth - 1;
   yearSelect.value = selectedYear;
-});
+}
+next.addEventListener("click", generateNextMonth);
 
 const monthSelect = document.querySelector("#month-select");
 
 monthSelect.addEventListener("change", (e) => {
-  console.log(e.target.value);
+  // console.log(e.target.value);
   selectedMonth = +e.target.value + 1;
   generateCalendar(selectedMonth, selectedYear);
 })
@@ -107,7 +96,7 @@ function generateMonthDropdown() {
     option.setAttribute("value", i);
     option.innerHTML = month;
     if (i === currentMonth - 1) {
-      console.log(monthsName[i]);
+      // console.log(monthsName[i]);
       option.setAttribute("selected", true);
     }
     monthSelect.appendChild(option);
@@ -118,7 +107,7 @@ generateMonthDropdown();
 const yearSelect = document.querySelector("#year-select");
 
 yearSelect.addEventListener("change", (e) => {
-  console.log(e.target.value);
+  // console.log(e.target.value);
   selectedYear = e.target.value;
   generateCalendar(selectedMonth, selectedYear);
 });
@@ -137,12 +126,15 @@ function generateYearDropdown() {
 }
 generateYearDropdown();
 
-const todayBtn = document.querySelector("#today");
-todayBtn.addEventListener("click", () => {
+function getTodayDate(){
   selectedYear = new Date().getFullYear();
   selectedMonth = new Date().getMonth() + 1;
   monthSelect.value = selectedMonth - 1;
   yearSelect.value = selectedYear;
-
+  const currentData = new Date().getDate();
+  console.log("Today's Date "+currentData);
   generateCalendar(selectedMonth, selectedYear);
-});
+}
+const todayBtn = document.querySelector("#today");
+todayBtn.addEventListener("click", getTodayDate);
+
